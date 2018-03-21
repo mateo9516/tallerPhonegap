@@ -47,19 +47,20 @@
 <body>
     <div class="container alert alert-success">
         <div id="deviceready" class="alert alert-alert">
-			<input type="text" class="form-control" placeholder="Search" id="numero" font-size="14"/>
+			<div class="input-group add-on">
+                <input type="text" class="form-control" placeholder="Search" id="numero" font-size="14"/>
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="javascript:onDeviceReady();"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Buscar</button>
+                </div>
+             </div>       
 			<br>
-			<button class="btn btn-success" id="btnContactos" type="button" onclick="javascript:onDeviceReady();">Contactos?</button>
-			<button class="btn btn-danger" id="btnConnect" type="button" onclick="javascript:conectividad();">Chequear el tipo de conexion</button>
-			<button class="btn btn-warning" id="btnNavegar" type="button" title="Ir a home" onclick="window.location.href='home.html'">Informacion sobre su telefono.</button>
+			<button class="btn btn-info" id="btnContactos" type="button" onclick="javascript:onDeviceReady();">Contactos</button>
+			<button class="btn btn-info" id="btnConnect" type="button" onclick="javascript:conectividad();">Chequear el tipo de conexion</button>
+			<button class="btn btn-info" id="btnNavegar" type="button" title="Ir a home" onclick="window.location.href='home.html'">Informacion sobre su telefono</button>
 			<button class="btn btn-info" id="btnServicio" type="button" title="Traer datos" onclick="window.location.href='servicio.html'">Servicio</button></button>
         </div>
 		<div class="container" role="alert">
 		<table class="table" id="tablita">
-		<tr>
-		<td>Nombre</td>
-		<td>Telefono</td>
-		</tr>
 		</table>
 		</div>
     </div>
@@ -72,12 +73,10 @@
 			function onDeviceReady() {
                 var options = new ContactFindOptions();
 				var telefono=document.getElementById("numero").value;
-				var fields = ["displayName", "name"];
+				var fields = ["displayName", "name", "phoneNumbers"];
 				if(telefono.length>0){
 				options.filter = telefono;
 				fields = ["displayName", "phoneNumbers"];
-				//options.hasPhoneNumber =true;
-				//options.filter = "maria";
 				}
 				options.multiple=true;
                 navigator.contacts.find(fields, onSuccess, onError, options);
@@ -87,14 +86,20 @@
 			console.log("Contactos = " + contacts.length);
 			alert('cantidad:'+contacts.length);
                 var table = document.getElementById("tablita");
-				for (var i = 0; i < contacts.length; i++) {
+				for (var i = contacts.length - 1; i >= 0; i--) {
                     console.log("Display Name = " + contacts[i].displayName);
 					var row = table.insertRow(0);
 					var cell1 = row.insertCell(0);
 					var cell2 = row.insertCell(1);
-					cell1.innerHTML = "Name";
+					cell1.innerHTML = contacts[i].id;
 					cell2.innerHTML = contacts[i].displayName;
                 }
+
+                var row = table.insertRow(0);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = "id";
+                cell2.innerHTML = "Nombre";
             }
             // onError: Failed to get the contacts
             function onError(contactError) {
@@ -106,5 +111,17 @@
         app.initialize();
     </script>
 </body>
-
+<footer class="page-footer font-small blue pt-4 mt-4">
+    <div class="container-fluid text-center text-md-left">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-uppercase">Desarrollado por:</h5>
+                <p>Carlos Gomez</p>
+                <p>Sebastian Giron</p>
+                <p>Mateo Echeverry</p>
+            </div>
+    <div class="footer-copyright py-3 text-center">
+        © Aplicativos Moviles Univalle 2018
+    </div>
+</footer>
 </html>

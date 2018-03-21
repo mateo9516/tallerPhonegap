@@ -48,8 +48,9 @@
 <body>
     <div>
         <div class="container" >
-		  <h2><mark>Informacion sobre su telefono.</mark></h2>
-          <br>
+		  <div class="jumbotron">
+            <h1>Información de su telefono</h1>
+          </div>
           <p class="text-justify" id="bateria">Estado de la bateria: </p>
           <p class="text-justify" id="conexion">Tipo de conexion: </p>
           <p class="text-justify" id="modelo">Modelo del telefono: </p>
@@ -57,7 +58,7 @@
           <p class="text-justify" id="fabricante">Fabricante: </p>
           
 
-          <button class="btn btn-danger" onclick="info();">Actualizar informacion del telefono.</button>
+          <button class="btn btn-primary btn-lg btn-block" onclick="info();">Actualizar informacion del telefono  </button>
 		</div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
@@ -68,5 +69,19 @@
         app.initialize();
     </script>
 </body>
+
+<footer class="page-footer font-small blue pt-4 mt-4">
+    <div class="container-fluid text-center text-md-left">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-uppercase">Desarrollado por:</h5>
+                <p>Carlos Gomez</p>
+                <p>Sebastian Giron</p>
+                <p>Mateo Echeverry</p>
+            </div>
+    <div class="footer-copyright py-3 text-center">
+        © Aplicativos Moviles Univalle 2018
+    </div>
+</footer>
 
 </html>
