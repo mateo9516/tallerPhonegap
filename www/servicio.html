@@ -19,16 +19,16 @@
 		<button class="btn btn-warning" id="volverId" type="button" onclick="window.location.href='index.html'">Volver</button>
         </div>
 		<div class="container" role="alert">
-		<table class="table" id="tablita" ng-repeat="item in data">
+		<table class="table table-bordered" id="tablita">
 		<tr>
-		<td>user-Id</td>
-		<td>{{item.userId}}</td>
-		<td>Id</td>
-		<td>{{item.id}}</td>
-		<td>title</td>
-		<td>{{item.title}}</td>
-		<td>body</td>
-		<td>{{item.body}}</td>
+			<td>user-Id</td>
+			<td>Id</td>
+			<td>title</td>	
+		</tr>
+		<tr ng-repeat="item in data">
+			<td>{{item.userId}}</td>
+			<td>{{item.id}}</td>
+			<td>{{item.title}}</td>
 		</tr>    
 		</table>
 		</div>
